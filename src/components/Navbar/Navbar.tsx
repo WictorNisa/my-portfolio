@@ -42,6 +42,7 @@ const Navbar = () => {
             { name: "Home", id: "hero" },
             { name: "About", id: "about" },
             { name: "Projects", id: "projects" },
+            { name: "Contact", id: "contact" },
           ].map((item, index) => (
             <motion.li
               key={item.name}

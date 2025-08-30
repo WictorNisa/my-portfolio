@@ -1,0 +1,527 @@
+/* Projects Section - Horizontal Scroll */
+.projectsSection {
+  height: 500vh; /* 5x viewport height to accommodate horizontal scrolling */
+  position: relative;
+}
+
+.projectsContainer {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background: var(--black);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.projectsSlider {
+  display: flex;
+  width: 400vw; /* 4x viewport width for 4 projects */
+  height: 100vh;
+  will-change: transform;
+  transition: transform 0.1s ease-out;
+}
+
+.projectSlide {
+  width: 100vw;
+  height: 100vh;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  scroll-snap-align: start;
+}
+
+.projectContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  max-width: 1200px;
+  width: 90%;
+  height: 80vh;
+  align-items: center;
+}
+
+.projectInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.projectNumber {
+  font-size: clamp(5rem, 1.5vw, 1.3rem);
+  color: var(--accent-color, var(--rose-red));
+  font-family: "KATSUMI", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+.projectTitle {
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  color: white;
+  font-family: "KATSUMI", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 8px;
+  line-height: 1.1;
+  margin: 0;
+  background: linear-gradient(
+    135deg,
+    white,
+    var(--accent-color, var(--rose-red))
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.projectDescription {
+  font-size: clamp(1.1rem, 1.3vw, 1.2rem);
+  color: #cccccc;
+  line-height: 1.8;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  max-width: 500px;
+}
+
+.projectTechnologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.techTag {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--accent-color, var(--rose-red));
+  border-radius: 25px;
+  padding: 0.5rem 1.2rem;
+  font-size: 0.9rem;
+  color: var(--accent-color, var(--rose-red));
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.techTag:hover {
+  background: var(--accent-color, var(--rose-red));
+  color: white;
+  transform: translateY(-2px);
+}
+
+.projectButtons {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.projectButton,
+.projectButtonSecondary {
+  padding: 1rem 2.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-family: "KATSUMI", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  display: inline-block;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+}
+
+.projectButton {
+  background: var(--accent-color, var(--rose-red));
+  color: white;
+  border: 2px solid var(--accent-color, var(--rose-red));
+}
+
+.projectButton:hover {
+  background: transparent;
+  color: var(--accent-color, var(--rose-red));
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(200, 35, 96, 0.3);
+}
+
+.projectButtonSecondary {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  border: 2px solid white;
+}
+
+.projectButtonSecondary:hover {
+  background: white;
+  color: var(--black);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+}
+
+.projectVisual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.projectImageContainer {
+  width: 100%;
+  max-width: 500px;
+  height: 350px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  transition: all 0.5s ease;
+}
+
+.projectImageContainer:hover {
+  transform: translateY(-10px) rotateY(5deg);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  border-color: var(--accent-color, var(--rose-red));
+}
+
+.projectImagePlaceholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    var(--accent-color, var(--rose-red)),
+    #8b1538
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "KATSUMI", sans-serif;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.projectImagePlaceholder::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transform: rotate(45deg);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}
+
+/* Navigation indicators */
+.projectIndicators {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1rem;
+  z-index: 10;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.indicator:hover {
+  background: rgba(255, 255, 255, 0.6);
+  transform: scale(1.1);
+}
+
+.indicatorActive {
+  background: var(--rose-red);
+  transform: scale(1.2);
+  box-shadow: 0 0 20px var(--rose-red);
+}
+
+/* Scroll hint */
+.scrollHint {
+  position: absolute;
+  bottom: 2rem;
+  right: 3rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  z-index: 10;
+  transition: opacity 0.3s ease;
+}
+
+.scrollArrow {
+  font-size: 1.2rem;
+  color: var(--rose-red);
+}
+
+/* Modal Styles */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 2rem;
+}
+
+.modalContent {
+  background: #0a0a0a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  max-width: 800px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+.closeButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.closeButton:hover {
+  background: var(--rose-red);
+}
+
+.modalImage {
+  height: 300px;
+}
+
+.modalImagePlaceholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    var(--accent-color, var(--rose-red)),
+    #8b1538
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "KATSUMI", sans-serif;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.modalInfo {
+  padding: 2rem;
+}
+
+.modalInfo h3 {
+  font-size: 2rem;
+  color: white;
+  font-family: "KATSUMI", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+
+.modalDescription {
+  font-size: 1.1rem;
+  color: #cccccc;
+  line-height: 1.7;
+  font-family: "Inter", sans-serif;
+  margin-bottom: 2rem;
+}
+
+.modalTechnologies h4 {
+  font-size: 1rem;
+  color: var(--rose-red);
+  font-family: "KATSUMI", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+}
+
+.techList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.modalTechTag {
+  background: rgba(200, 35, 96, 0.1);
+  border: 1px solid rgba(200, 35, 96, 0.3);
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  color: var(--rose-red);
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+}
+
+.modalButtons {
+  display: flex;
+  gap: 1rem;
+}
+
+.modalButton,
+.modalButtonSecondary {
+  padding: 0.8rem 2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-family: "KATSUMI", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-block;
+  text-align: center;
+}
+
+.modalButton {
+  background: var(--rose-red);
+  color: white;
+  border: 2px solid var(--rose-red);
+}
+
+.modalButton:hover {
+  background: transparent;
+  color: var(--rose-red);
+}
+
+.modalButtonSecondary {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.modalButtonSecondary:hover {
+  background: white;
+  color: var(--black);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .projectsSection {
+    height: 600vh; /* More height for mobile */
+  }
+
+  .projectContent {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+
+  .projectImageContainer {
+    max-width: 350px;
+    height: 250px;
+    margin: 0 auto;
+    order: -1;
+  }
+
+  .projectButtons {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .scrollHint {
+    bottom: 1rem;
+    right: 1rem;
+    font-size: 0.8rem;
+  }
+
+  .modalContent {
+    grid-template-columns: 1fr;
+    max-height: 95vh;
+  }
+
+  .modalImage {
+    height: 200px;
+  }
+
+  .modalInfo {
+    padding: 1.5rem;
+  }
+
+  .modalButtons {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .projectContent {
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+
+  .projectImageContainer {
+    height: 200px;
+  }
+
+  .modalOverlay {
+    padding: 1rem;
+  }
+
+  .modalInfo {
+    padding: 1rem;
+  }
+
+  .projectTitle {
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: 4px;
+  }
+
+  .projectDescription {
+    font-size: 1rem;
+  }
+}
