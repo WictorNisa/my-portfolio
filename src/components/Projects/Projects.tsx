@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "motion/react";
 import { useState, useRef, useEffect } from "react";
 import styles from "./Projects.module.css";
+import animeRankerImage from "../../assets/images/rankimeProject.png";
 
 interface Project {
   id: number;
@@ -24,14 +25,20 @@ const Projects = () => {
   const projects: Project[] = [
     {
       id: 1,
-      title: "E-Commerce Platform",
-      description: "Modern React e-commerce with TypeScript",
+      title: "Anime Ranker",
+      description: "Interactive anime ranking and discovery platform",
       fullDescription:
-        "A fully responsive e-commerce platform built with React, TypeScript, and Node.js. Features include user authentication, payment processing, inventory management, and real-time updates.",
-      technologies: ["React", "TypeScript", "Node.js", "MongoDB", "Stripe"],
-      image: "/api/placeholder/400/300",
-      liveDemo: "https://demo1.com",
-      github: "https://github.com/user/project1",
+        "A comprehensive anime ranking application that allows users to discover, rate, and create personalized anime lists. Built with modern React and TypeScript, featuring dynamic filtering, real-time search, and interactive ranking systems. Users can explore trending anime, create custom tier lists, and compare ratings with the community.",
+      technologies: [
+        "React",
+        "TypeScript",
+        "Supabase",
+        "Tailwind CSS",
+        "API Integration",
+      ],
+      image: animeRankerImage,
+      liveDemo: "https://anime-ranker-app-u2xq.vercel.app/",
+      github: "https://github.com/WictorNisa/anime-ranker",
       color: "#c82360",
     },
     {
@@ -214,9 +221,18 @@ const Projects = () => {
                     transition={{ duration: 0.6 }}
                   >
                     <div className={styles.projectImageContainer}>
-                      <div className={styles.projectImagePlaceholder}>
-                        {project.title}
-                      </div>
+                      {/* Updated this part to show actual images */}
+                      {project.image.startsWith("/api/placeholder") ? (
+                        <div className={styles.projectImagePlaceholder}>
+                          {project.title}
+                        </div>
+                      ) : (
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          className={styles.projectImage}
+                        />
+                      )}
                     </div>
                   </motion.div>
                 </div>
@@ -293,9 +309,18 @@ const Projects = () => {
               </motion.button>
 
               <div className={styles.modalImage}>
-                <div className={styles.modalImagePlaceholder}>
-                  {selectedProject.title}
-                </div>
+                {/* Updated modal image too */}
+                {selectedProject.image.startsWith("/api/placeholder") ? (
+                  <div className={styles.modalImagePlaceholder}>
+                    {selectedProject.title}
+                  </div>
+                ) : (
+                  <img
+                    src={selectedProject.image}
+                    alt={selectedProject.title}
+                    className={styles.modalImageActual}
+                  />
+                )}
               </div>
 
               <div className={styles.modalInfo}>
