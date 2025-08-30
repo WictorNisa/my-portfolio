@@ -1,0 +1,190 @@
+.heroContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  background-image: url("../../assets/images/heroBg.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  text-align: center;
+  position: relative;
+  padding: 2rem 0;
+}
+
+.heroContainer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+.heroIntroContainer {
+  max-width: 1500px;
+  height: 100%;
+  width: 100%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.heroIntroText {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.heroIntroText h1 {
+  font-size: clamp(3rem, 8vw, 10rem);
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: "KATSUMI";
+  text-align: left;
+  letter-spacing: clamp(2px, 1vw, 10px);
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  border-bottom: 2px solid white;
+  padding-bottom: clamp(0.5rem, 1vw, 1rem);
+  line-height: 0.9;
+}
+
+.heroIntroText p {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-weight: 500;
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: clamp(1px, 0.5vw, 2px);
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  font-family: "Inter", sans-serif;
+}
+
+.heroIntroAboutText {
+  flex: 1;
+  margin-top: auto;
+  padding: clamp(1rem, 2vw, 2rem);
+  line-height: 1.6;
+  border-left: 2px solid white;
+  min-width: 0;
+}
+
+.heroIntroAboutText p {
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-weight: 400;
+  text-align: left;
+  letter-spacing: 0.5px;
+  color: white;
+  font-family: "Inter", sans-serif;
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.heroIntroAboutText button {
+  width: clamp(150px, 30vw, 200px);
+  border: 2px solid white;
+  padding: clamp(8px, 1.5vw, 12px) clamp(16px, 3vw, 24px);
+  background-color: transparent;
+  color: white;
+  text-transform: uppercase;
+  font-size: clamp(0.8rem, 1.2vw, 1rem);
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  font-family: "KATSUMI";
+  transition: all 0.3s ease;
+  letter-spacing: 1px;
+  display: block;
+  margin: 0;
+}
+
+.heroIntroAboutText button:hover {
+  background-color: var(--rose-red);
+  color: white;
+  border-color: var(--rose-red);
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.7);
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .heroContainer {
+    background-attachment: scroll;
+  }
+
+  .heroIntroContainer {
+    width: 95%;
+    gap: 1.5rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .heroIntroContainer {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .heroIntroText,
+  .heroIntroAboutText {
+    width: 100%;
+    flex: none;
+  }
+
+  .heroIntroText h1,
+  .heroIntroText p {
+    text-align: center;
+  }
+
+  .heroIntroAboutText {
+    border-left: none;
+    border-top: 2px solid white;
+    padding-top: 2rem;
+    margin-top: 0;
+  }
+
+  .heroIntroAboutText p {
+    text-align: center;
+  }
+
+  .heroIntroAboutText button {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroContainer {
+    padding: 1rem 0;
+    min-height: calc(100vh - 60px);
+  }
+
+  .heroIntroContainer {
+    width: 95%;
+    gap: 1rem;
+  }
+
+  .heroIntroText h1 {
+    margin-bottom: 0.5rem;
+  }
+
+  .heroIntroText {
+    gap: 1rem;
+  }
+
+  .heroIntroAboutText {
+    padding: 1rem;
+  }
+}

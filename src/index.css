@@ -1,0 +1,24 @@
+@font-face {
+  font-family: "KATSUMI";
+  src: url("./assets/fonts/KATSUMI.woff2") format("woff2"),
+    url("./assets/fonts/KATSUMI.woff") format("woff"),
+    url("./assets/fonts/KATSUMI.ttf") format("truetype"),
+    url("./assets/fonts/KATSUMI.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --palatinate: #551c48ff;
+  --black: #070407ff;
+  --black-2: #050306ff;
+  --rose-red: #c82360ff;
+  --burgundy: #830a26ff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
