@@ -23,11 +23,13 @@
   font-size: clamp(1.2rem, 2.5vw, 1.5rem);
   font-weight: bold;
   color: white;
-  text-decoration: none;
+  background: none;
+  border: none;
   text-transform: uppercase;
   font-family: "KATSUMI";
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
   transition: color 0.3s ease;
+  cursor: pointer;
 }
 
 .navLogo:hover {
@@ -51,12 +53,14 @@
   font-family: "KATSUMI";
   text-transform: uppercase;
   letter-spacing: 3px;
-  text-decoration: none;
   font-weight: 500;
   font-size: clamp(0.8rem, 1.5vw, 1rem);
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
   transition: color 0.3s ease;
   position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .navLink:hover {

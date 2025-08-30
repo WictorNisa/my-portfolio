@@ -1,0 +1,185 @@
+.aboutContainer {
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+}
+
+.aboutContent {
+  max-width: 800px;
+  width: 100%;
+  text-align: center;
+}
+
+.aboutTextContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+.aboutTextContainer span {
+  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+  color: var(--rose-red);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 600;
+  font-family: "KATSUMI";
+}
+
+.aboutTextContainer h2 {
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  color: white;
+  font-family: "KATSUMI";
+  text-transform: uppercase;
+  letter-spacing: 10px;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+.aboutTextContainer p {
+  font-size: clamp(1rem, 1.3vw, 1.2rem);
+  color: #cccccc;
+  line-height: 1.8;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  margin-bottom: 2rem;
+  max-width: 600px;
+}
+
+.skillsCarousel {
+  width: 100%;
+  height: 60px;
+  overflow: hidden;
+  position: relative;
+  margin-top: 2rem;
+}
+
+.skillsCarousel::before,
+.skillsCarousel::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.skillsCarousel::before {
+  left: 0;
+  background: linear-gradient(
+    90deg,
+    var(--black) 0%,
+    var(--black) 20%,
+    rgba(7, 4, 7, 0.8) 40%,
+    rgba(7, 4, 7, 0.4) 70%,
+    transparent 100%
+  );
+}
+
+.skillsCarousel::after {
+  right: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(7, 4, 7, 0.4) 30%,
+    rgba(7, 4, 7, 0.8) 60%,
+    var(--black) 80%,
+    var(--black) 100%
+  );
+}
+
+.carouselTrack {
+  display: flex;
+  width: fit-content;
+}
+
+.skillItem {
+  flex-shrink: 0;
+  padding: 0.8rem 2rem;
+  margin: 0 1rem;
+  border-radius: 30px;
+  color: var(--rose-red);
+  font-family: "KATSUMI";
+  font-size: clamp(0.9rem, 1vw, 1rem);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 500;
+  white-space: nowrap;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.skillItem:hover {
+  border-color: var(--rose-red);
+  transform: translateY(-2px);
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .aboutContainer {
+    padding: 3rem 1.5rem;
+  }
+
+  .skillsCarousel {
+    height: 55px;
+  }
+
+  .skillsCarousel::before,
+  .skillsCarousel::after {
+    width: 70px;
+  }
+
+  .skillItem {
+    padding: 0.7rem 1.5rem;
+    margin: 0 0.8rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .aboutContainer {
+    padding: 2rem 1rem;
+    min-height: auto;
+  }
+
+  .skillsCarousel {
+    height: 50px;
+  }
+
+  .skillsCarousel::before,
+  .skillsCarousel::after {
+    width: 60px;
+  }
+
+  .skillItem {
+    padding: 0.6rem 1.2rem;
+    margin: 0 0.6rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .aboutContainer {
+    padding: 2rem 1rem;
+  }
+
+  .skillsCarousel {
+    height: 45px;
+  }
+
+  .skillsCarousel::before,
+  .skillsCarousel::after {
+    width: 50px;
+  }
+
+  .skillItem {
+    padding: 0.5rem 1rem;
+    margin: 0 0.5rem;
+    font-size: 0.8rem;
+  }
+}

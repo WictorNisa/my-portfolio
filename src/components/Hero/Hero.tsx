@@ -2,8 +2,18 @@ import { motion } from "motion/react";
 import styles from "./Hero.module.css";
 
 const Hero = () => {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
   return (
-    <section className={styles.heroContainer}>
+    <section id="hero" className={styles.heroContainer}>
       <motion.div
         className={styles.heroIntroContainer}
         initial={{ opacity: 0 }}
@@ -28,7 +38,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            Wictor Niså
+            Wictor <span className={styles.lastName}>Niså</span>
           </motion.h1>
         </motion.div>
         <motion.div
@@ -56,6 +66,7 @@ const Hero = () => {
               transition: { duration: 0.2 },
             }}
             whileTap={{ scale: 0.95 }}
+            onClick={() => scrollToSection("projects")}
           >
             See my work
           </motion.button>

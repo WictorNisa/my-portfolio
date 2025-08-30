@@ -1,9 +1,11 @@
-import styles from './Projects.module.css'
+import styles from "./Projects.module.css";
 
 const Projects = () => {
   return (
-    <div>Projects</div>
-  )
-}
+    <section id="projects" className={styles.projectsContainer}>
+      <div>Projects</div>
+    </section>
+  );
+};
 
-export default Projects
+export default Projects;
