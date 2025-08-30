@@ -1,0 +1,74 @@
+.sectionBreakerContainer {
+  width: 100vw;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-image: url("../../assets/images/sectionBreakerBg2.jpeg");
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+}
+
+.sectionBreakerContainer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.sectionBreakerInnerContainer {
+  max-width: 800px;
+  height: 60%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+.sectionBreakerInnerContainer h3 {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  color: white;
+  font-family: "KATSUMI";
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  line-height: 1.2;
+}
+
+.sectionBreakerInnerContainer p {
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  color: #f0f0f0;
+  font-family: "Inter", sans-serif;
+  font-weight: 300;
+  margin-top: 1rem;
+  line-height: 1.6;
+}
+
+.sectionBreakerInnerContainer button {
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  color: white;
+  background: transparent;
+  border: 2px solid white;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  text-transform: uppercase;
+  font-family: "KATSUMI";
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.sectionBreakerInnerContainer button:hover {
+  background: var(--rose-red);
+  border-color: var(--rose-red);
+  color: white;
+  transform: translateY(-2px);
+}
