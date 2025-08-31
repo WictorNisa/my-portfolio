@@ -39,7 +39,6 @@ const Navbar = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
         >
           {[
-            { name: "Home", id: "hero" },
             { name: "About", id: "about" },
             { name: "Projects", id: "projects" },
             { name: "Contact", id: "contact" },

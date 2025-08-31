@@ -47,6 +47,7 @@
   opacity: 0.9;
   position: relative;
   padding: 0 2rem;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
 }
 
 .footerSubtitle::before,
@@ -57,14 +58,49 @@
   width: 50px;
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--rose-red), transparent);
+  overflow: hidden;
 }
 
 .footerSubtitle::before {
   left: -50px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--rose-red) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: lineShimmerLeft 2.5s infinite ease-in-out;
 }
 
 .footerSubtitle::after {
   right: -50px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--rose-red) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: lineShimmerRight 2.5s infinite ease-in-out;
+}
+
+@keyframes lineShimmerLeft {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes lineShimmerRight {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
 
 .footerTitle {

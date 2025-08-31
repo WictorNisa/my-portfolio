@@ -45,6 +45,7 @@
   font-family: "KATSUMI";
   position: relative;
   padding: 0 2rem;
+   text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
 }
 
 .sectionBreakerInnerContainer span::before,
@@ -55,6 +56,47 @@
   width: 50px;
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--rose-red), transparent);
+  overflow: hidden;
+}
+
+.sectionBreakerInnerContainer span::before {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--rose-red) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: lineShimmerLeft 2.5s infinite ease-in-out;
+}
+
+.sectionBreakerInnerContainer span::after {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--rose-red) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: lineShimmerRight 2.5s infinite ease-in-out;
+}
+
+@keyframes lineShimmerLeft {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes lineShimmerRight {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
 
 .sectionBreakerInnerContainer span::before {

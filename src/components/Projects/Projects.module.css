@@ -64,6 +64,7 @@
   position: relative;
   padding: 0 2rem;
   align-self: flex-start;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
 }
 
 .projectNumber::before,
@@ -79,14 +80,49 @@
     var(--accent-color, var(--rose-red)),
     transparent
   );
+  overflow: hidden;
 }
 
 .projectNumber::before {
   left: -30px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--accent-color, var(--rose-red)) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: lineShimmerLeft 2.5s infinite ease-in-out;
 }
 
 .projectNumber::after {
   right: -30px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--accent-color, var(--rose-red)) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: lineShimmerRight 2.5s infinite ease-in-out;
+}
+
+@keyframes lineShimmerLeft {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes lineShimmerRight {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
 
 .projectTitle {
@@ -315,8 +351,8 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  color: rgba(255, 255, 255, 0.6);
-  font-family: "Inter", sans-serif;
+  color: white;
+  font-family: "KATSUMI", sans-serif;
   font-size: 0.9rem;
   z-index: 10;
   transition: opacity 0.3s ease;
