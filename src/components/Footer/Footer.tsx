@@ -99,7 +99,7 @@ const Footer = () => {
             viewport={{ once: true }}
           >
             <motion.a
-              href="https://www.linkedin.com/in/wictornisa"
+              href="https://www.linkedin.com/in/wictor-nis%C3%A5-9b8bab183/"
               className={styles.socialLink}
               target="_blank"
               rel="noopener noreferrer"

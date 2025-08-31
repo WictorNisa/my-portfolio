@@ -66,15 +66,15 @@
 }
 
 .heroSubtitle {
-  font-size: clamp(1.2rem, 1.2vw, 1.1rem);
+  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
   color: var(--rose-red);
   font-family: "KATSUMI", sans-serif;
   text-transform: uppercase;
-  letter-spacing: 3px;
+  letter-spacing: clamp(1px, 3px, 3px);
   font-weight: 600;
   position: relative;
   padding: 0 2rem;
-   text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
 }
 
 .heroSubtitle::before,
@@ -131,17 +131,17 @@
 }
 
 .heroTitle {
-  font-size: clamp(4rem, 8vw, 8rem);
+  font-size: clamp(2.5rem, 8vw, 8rem);
   font-weight: bold;
   text-transform: uppercase;
   font-family: "KATSUMI", sans-serif;
-  letter-spacing: clamp(4px, 1vw, 12px);
+  letter-spacing: clamp(2px, 1vw, 12px);
   color: white;
   text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
   line-height: 1.1;
   margin: 0;
   text-align: center;
-  white-space: nowrap;
+  white-space: normal;
 }
 
 .heroDescription {

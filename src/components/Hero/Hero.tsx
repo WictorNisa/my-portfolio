@@ -54,7 +54,7 @@ const Hero = () => {
         </motion.a>
 
         <motion.a
-          href="https://www.linkedin.com/in/wictornisa"
+          href="https://www.linkedin.com/in/wictor-nis%C3%A5-9b8bab183/"
           target="_blank"
           rel="noopener noreferrer"
           className={styles.socialIcon}
