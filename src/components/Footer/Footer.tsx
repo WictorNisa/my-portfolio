@@ -126,20 +126,6 @@ const Footer = () => {
             >
               <span>GitHub</span>
             </motion.a>
-            <motion.a
-              href="https://twitter.com/wictornisa"
-              className={styles.socialLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4, delay: 1.2 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <span>Twitter</span>
-            </motion.a>
           </motion.div>
         </motion.div>
 

@@ -2,6 +2,9 @@ import { motion, AnimatePresence } from "motion/react";
 import { useState, useRef, useEffect } from "react";
 import styles from "./Projects.module.css";
 import animeRankerImage from "../../assets/images/rankimeProject.png";
+import pokeDexImage from "../../assets/images/pokeDexProject.png";
+import cocktailImage from "../../assets/images/cocktailProject.png";
+import triviaImage from "../../assets/images/triviaMasterProject.png";
 
 interface Project {
   id: number;
@@ -43,38 +46,38 @@ const Projects = () => {
     },
     {
       id: 2,
-      title: "Portfolio Website",
-      description: "Responsive portfolio with animations",
+      title: "Pokédex App",
+      description: "Interactive Pokémon database explorer",
       fullDescription:
-        "A modern portfolio website showcasing projects and skills with smooth animations and responsive design. Built with React and Motion for engaging user experience.",
-      technologies: ["React", "Motion", "CSS Modules", "Vite"],
-      image: "/api/placeholder/400/300",
-      liveDemo: "https://demo2.com",
-      github: "https://github.com/user/project2",
+        "A comprehensive Pokédex application that allows users to explore and discover Pokémon information. Built with React and integrated with the Pokémon API, featuring detailed Pokémon stats, abilities, and evolution chains. Users can search, filter, and browse through the complete Pokémon database with smooth animations and responsive design.",
+      technologies: ["React", "Pokedex API", "Axios", "Vanilla JS"],
+      image: pokeDexImage,
+      liveDemo: "https://pokedex-five-bice.vercel.app/pages/pokedex",
+      github: "https://github.com/WictorNisa/pokedex",
       color: "#551c48",
     },
     {
       id: 3,
-      title: "Task Management App",
-      description: "Collaborative productivity tool",
+      title: "Cocktail Explorer",
+      description: "Interactive cocktail recipe discovery app",
       fullDescription:
-        "A comprehensive task management application with real-time collaboration features. Users can create projects, assign tasks, track progress, and communicate with team members.",
-      technologies: ["React", "Node.js", "Socket.io", "PostgreSQL"],
-      image: "/api/placeholder/400/300",
-      liveDemo: "https://demo3.com",
-      github: "https://github.com/user/project3",
+        "A comprehensive cocktail discovery application that allows users to explore and discover cocktail recipes. Built with modern web technologies and integrated with cocktail APIs, featuring detailed recipe information, ingredient lists, and preparation instructions. Users can search, filter, and browse through an extensive cocktail database.",
+      technologies: ["JavaScript", "API Integration", "HTML", "CSS"],
+      image: cocktailImage,
+      liveDemo: "https://api-grade-exam.vercel.app/",
+      github: "https://github.com/WictorNisa/Api-grade-exam",
       color: "#830a26",
     },
     {
       id: 4,
-      title: "Weather Dashboard",
-      description: "Real-time weather monitoring",
+      title: "Trivia Master",
+      description: "Interactive trivia quiz application",
       fullDescription:
-        "An interactive weather dashboard that provides real-time weather information, forecasts, and historical data visualization with beautiful charts and maps.",
-      technologies: ["React", "TypeScript", "Chart.js", "Weather API"],
-      image: "/api/placeholder/400/300",
-      liveDemo: "https://demo4.com",
-      github: "https://github.com/user/project4",
+        "An engaging trivia quiz application that challenges users with questions across various categories. Built with modern web technologies, featuring dynamic question generation, score tracking, and interactive user interface. Players can test their knowledge across different difficulty levels and compete for high scores.",
+      technologies: ["React", "JavaScript", "API Integration", "CSS"],
+      image: triviaImage,
+      liveDemo: "https://trivia-project-six.vercel.app/",
+      github: "https://github.com/WictorNisa/trivia-project",
       color: "#c82360",
     },
   ];

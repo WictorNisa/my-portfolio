@@ -67,7 +67,7 @@ const Hero = () => {
         </motion.a>
 
         <motion.a
-          href="mailto:wictor.nisa@example.com"
+          href="mailto:wictornisa@hotmail.com"
           className={styles.socialIcon}
           whileHover={{ scale: 1.2, color: "#ea4335" }}
           whileTap={{ scale: 0.9 }}
