@@ -11,6 +11,7 @@ const SectionBreaker = () => {
         transition={{ duration: 0.8 }}
         viewport={{ once: true, amount: 0.3 }}
       >
+        <span>Animations and visual design</span>
         <motion.h3
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

@@ -45,6 +45,26 @@
   letter-spacing: 3px;
   font-weight: 600;
   opacity: 0.9;
+  position: relative;
+  padding: 0 2rem;
+}
+
+.footerSubtitle::before,
+.footerSubtitle::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 50px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--rose-red), transparent);
+}
+
+.footerSubtitle::before {
+  left: -50px;
+}
+
+.footerSubtitle::after {
+  right: -50px;
 }
 
 .footerTitle {
@@ -256,6 +276,19 @@
     gap: 1rem;
     text-align: center;
   }
+
+  .footerSubtitle::before,
+  .footerSubtitle::after {
+    width: 40px;
+  }
+
+  .footerSubtitle::before {
+    left: -40px;
+  }
+
+  .footerSubtitle::after {
+    right: -40px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -273,5 +306,18 @@
 
   .socialLinks {
     gap: 1rem;
+  }
+
+  .footerSubtitle::before,
+  .footerSubtitle::after {
+    width: 30px;
+  }
+
+  .footerSubtitle::before {
+    left: -30px;
+  }
+
+  .footerSubtitle::after {
+    right: -30px;
   }
 }

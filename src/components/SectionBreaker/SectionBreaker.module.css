@@ -33,7 +33,38 @@
   justify-content: center;
   position: relative;
   z-index: 2;
+  gap: 2rem;
 }
+
+.sectionBreakerInnerContainer span {
+  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+  color: var(--rose-red);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 600;
+  font-family: "KATSUMI";
+  position: relative;
+  padding: 0 2rem;
+}
+
+.sectionBreakerInnerContainer span::before,
+.sectionBreakerInnerContainer span::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 50px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--rose-red), transparent);
+}
+
+.sectionBreakerInnerContainer span::before {
+  left: -50px;
+}
+
+.sectionBreakerInnerContainer span::after {
+  right: -50px;
+}
+
 .sectionBreakerInnerContainer h3 {
   font-size: clamp(1.5rem, 3vw, 2.5rem);
   color: white;
@@ -41,6 +72,7 @@
   text-transform: uppercase;
   letter-spacing: 5px;
   line-height: 1.2;
+  margin: 0;
 }
 
 .sectionBreakerInnerContainer p {
@@ -48,8 +80,9 @@
   color: #f0f0f0;
   font-family: "Inter", sans-serif;
   font-weight: 300;
-  margin-top: 1rem;
   line-height: 1.6;
+  margin: 0;
+  max-width: 600px;
 }
 
 .sectionBreakerInnerContainer button {
@@ -57,13 +90,13 @@
   color: white;
   background: transparent;
   border: 2px solid white;
-  padding: 0.5rem 1rem;
+  padding: 1rem 2rem;
   cursor: pointer;
-  margin-top: 1rem;
   text-transform: uppercase;
   font-family: "KATSUMI";
   letter-spacing: 1px;
   transition: all 0.3s ease;
+  border-radius: 8px;
 }
 
 .sectionBreakerInnerContainer button:hover {
@@ -71,4 +104,35 @@
   border-color: var(--rose-red);
   color: white;
   transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sectionBreakerInnerContainer span::before,
+  .sectionBreakerInnerContainer span::after {
+    width: 40px;
+  }
+
+  .sectionBreakerInnerContainer span::before {
+    left: -40px;
+  }
+
+  .sectionBreakerInnerContainer span::after {
+    right: -40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sectionBreakerInnerContainer span::before,
+  .sectionBreakerInnerContainer span::after {
+    width: 30px;
+  }
+
+  .sectionBreakerInnerContainer span::before {
+    left: -30px;
+  }
+
+  .sectionBreakerInnerContainer span::after {
+    right: -30px;
+  }
 }
