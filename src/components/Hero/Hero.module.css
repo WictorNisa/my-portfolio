@@ -67,7 +67,7 @@
 
 .heroSubtitle {
   font-size: clamp(0.9rem, 1.2vw, 1.1rem);
-  color: var(--rose-red);
+  color: white;
   font-family: "KATSUMI", sans-serif;
   text-transform: uppercase;
   letter-spacing: clamp(1px, 3px, 3px);
@@ -157,15 +157,15 @@
 }
 
 .heroButton {
-  padding: 1rem 3rem;
+  padding: .8rem 2rem;
   border: 2px solid white;
   background-color: transparent;
   color: white;
   text-transform: uppercase;
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: .8rem;
+  font-weight:300;
   cursor: pointer;
-  font-family: "KATSUMI", sans-serif;
+  font-family: "Inter", sans-serif;
   transition: all 0.3s ease;
   letter-spacing: 2px;
   border-radius: 8px;
@@ -183,7 +183,7 @@
 /* Scroll Indicator */
 .scrollIndicator {
   position: fixed;
-  bottom: 3rem;
+  bottom: 1rem;
   left: 50%;
   transform: translateX(-50%);
   display: flex;

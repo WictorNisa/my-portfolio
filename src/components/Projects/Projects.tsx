@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "motion/react";
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import styles from "./Projects.module.css";
 import animeRankerImage from "../../assets/images/rankimeProject.png";
 import pokeDexImage from "../../assets/images/pokeDexProject.png";
@@ -20,10 +20,6 @@ interface Project {
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
-  const [isInHorizontalSection, setIsInHorizontalSection] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const sliderRef = useRef<HTMLDivElement>(null);
 
   const projects: Project[] = [
     {
@@ -82,199 +78,139 @@ const Projects = () => {
     },
   ];
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!sectionRef.current || !sliderRef.current) return;
-
-      const section = sectionRef.current;
-      const slider = sliderRef.current;
-      const rect = section.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-
-      // Check if we're in the horizontal section
-      const sectionTop = rect.top;
-      const sectionBottom = rect.bottom;
-      const inSection = sectionTop <= 0 && sectionBottom >= windowHeight;
-
-      setIsInHorizontalSection(inSection);
-
-      if (inSection) {
-        // Calculate scroll progress within the section
-        const sectionHeight = section.offsetHeight;
-        const scrollProgress =
-          Math.abs(sectionTop) / (sectionHeight - windowHeight);
-        const clampedProgress = Math.max(0, Math.min(1, scrollProgress));
-
-        // Calculate horizontal transform
-        const maxTransform = (projects.length - 1) * 100;
-        const translateX = clampedProgress * maxTransform;
-
-        // Apply horizontal scroll transform
-        slider.style.transform = `translateX(-${translateX}vw)`;
-
-        // Update current project index
-        const newIndex = Math.round(clampedProgress * (projects.length - 1));
-        if (newIndex !== currentProjectIndex) {
-          setCurrentProjectIndex(newIndex);
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [projects.length, currentProjectIndex]);
-
-  // Snap to specific project
-  const snapToProject = (index: number) => {
-    if (!sectionRef.current) return;
-
-    const section = sectionRef.current;
-    const rect = section.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
-    const sectionHeight = section.offsetHeight;
-
-    // Calculate target scroll position
-    const progress = index / (projects.length - 1);
-    const targetScroll =
-      window.pageYOffset + rect.top + progress * (sectionHeight - windowHeight);
-
-    window.scrollTo({
-      top: targetScroll,
-      behavior: "smooth",
-    });
-  };
-
   return (
     <>
-      {/* Projects section with horizontal scrolling */}
-      <div ref={sectionRef} className={styles.projectsSection} id="projects">
+      {/* Projects section with vertical scrolling */}
+      <div className={styles.projectsSection} id="projects">
+        <motion.div
+          className={styles.projectsHeader}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <span className={styles.sectionLabel}>Portfolio</span>
+          <h2 className={styles.sectionTitle}>Featured Projects</h2>
+          <p className={styles.sectionDescription}>
+            A collection of my recent work and personal projects
+          </p>
+        </motion.div>
+
         <div className={styles.projectsContainer}>
-          <div ref={sliderRef} className={styles.projectsSlider}>
-            {projects.map((project, index) => (
+          {projects.map((project, index) => (
+            <motion.div
+              key={project.id}
+              className={styles.projectCard}
+              style={{ "--accent-color": project.color } as React.CSSProperties}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              viewport={{ once: true, amount: 0.3 }}
+            >
               <div
-                key={project.id}
-                className={styles.projectSlide}
-                style={
-                  { "--accent-color": project.color } as React.CSSProperties
-                }
+                className={`${styles.projectContent} ${
+                  index % 2 === 0 ? styles.contentLeft : styles.contentRight
+                }`}
               >
-                <div className={styles.projectContent}>
-                  <motion.div
-                    className={styles.projectInfo}
-                    initial={{ opacity: 0, x: -50 }}
-                    animate={{
-                      opacity: index === currentProjectIndex ? 1 : 0.3,
-                      x: index === currentProjectIndex ? 0 : -30,
-                    }}
-                    transition={{ duration: 0.6, ease: "easeOut" }}
-                  >
-                    <motion.span
-                      className={styles.projectNumber}
-                      animate={{
-                        opacity: index === currentProjectIndex ? 1 : 0.5,
-                      }}
+                <motion.div
+                  className={styles.projectImageContainer}
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className={styles.projectImage}
+                  />
+                  <div className={styles.projectOverlay}>
+                    <motion.button
+                      className={styles.viewDetailsButton}
+                      onClick={() => setSelectedProject(project)}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
                     >
-                      {String(index + 1).padStart(2, "0")}
-                    </motion.span>
+                      View Details
+                    </motion.button>
+                  </div>
+                </motion.div>
 
-                    <motion.h2 className={styles.projectTitle}>
-                      {project.title}
-                    </motion.h2>
+                <div className={styles.projectInfo}>
+                  <motion.span
+                    className={styles.projectNumber}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    viewport={{ once: true }}
+                  >
+                    {String(index + 1).padStart(2, "0")}
+                  </motion.span>
 
-                    <motion.p className={styles.projectDescription}>
-                      {project.fullDescription}
-                    </motion.p>
+                  <motion.h3
+                    className={styles.projectTitle}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.3 }}
+                    viewport={{ once: true }}
+                  >
+                    {project.title}
+                  </motion.h3>
 
-                    <motion.div className={styles.projectTechnologies}>
-                      {project.technologies.map((tech, i) => (
-                        <span key={i} className={styles.techTag}>
-                          {tech}
-                        </span>
-                      ))}
-                    </motion.div>
+                  <motion.p
+                    className={styles.projectDescription}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
+                    viewport={{ once: true }}
+                  >
+                    {project.description}
+                  </motion.p>
 
-                    <motion.div className={styles.projectButtons}>
-                      <motion.button
-                        className={styles.projectButton}
-                        onClick={() => setSelectedProject(project)}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        View Details
-                      </motion.button>
-                      <motion.a
-                        href={project.liveDemo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={styles.projectButtonSecondary}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        Live Demo
-                      </motion.a>
-                    </motion.div>
+                  <motion.div
+                    className={styles.projectTechnologies}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.5 }}
+                    viewport={{ once: true }}
+                  >
+                    {project.technologies.map((tech, i) => (
+                      <span key={i} className={styles.techTag}>
+                        {tech}
+                      </span>
+                    ))}
                   </motion.div>
 
                   <motion.div
-                    className={styles.projectVisual}
-                    animate={{
-                      opacity: index === currentProjectIndex ? 1 : 0.3,
-                      scale: index === currentProjectIndex ? 1 : 0.95,
-                    }}
-                    transition={{ duration: 0.6 }}
+                    className={styles.projectButtons}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.6 }}
+                    viewport={{ once: true }}
                   >
-                    <div className={styles.projectImageContainer}>
-                      {/* Updated this part to show actual images */}
-                      {project.image.startsWith("/api/placeholder") ? (
-                        <div className={styles.projectImagePlaceholder}>
-                          {project.title}
-                        </div>
-                      ) : (
-                        <img
-                          src={project.image}
-                          alt={project.title}
-                          className={styles.projectImage}
-                        />
-                      )}
-                    </div>
+                    <motion.a
+                      href={project.liveDemo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.projectButton}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      Live Demo
+                    </motion.a>
+                    <motion.a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.projectButtonSecondary}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      GitHub
+                    </motion.a>
                   </motion.div>
                 </div>
               </div>
-            ))}
-          </div>
-
-          {/* Navigation indicators */}
-          <div className={styles.projectIndicators}>
-            {projects.map((_, index) => (
-              <motion.button
-                key={index}
-                className={`${styles.indicator} ${
-                  index === currentProjectIndex ? styles.indicatorActive : ""
-                }`}
-                onClick={() => snapToProject(index)}
-                whileHover={{ scale: 1.2 }}
-                whileTap={{ scale: 0.8 }}
-              />
-            ))}
-          </div>
-
-          {/* Scroll hint */}
-          <motion.div
-            className={styles.scrollHint}
-            animate={{
-              opacity: isInHorizontalSection ? 1 : 0.7,
-              y: isInHorizontalSection ? 0 : 10,
-            }}
-          >
-            <span>Scroll to explore projects</span>
-            <motion.div
-              className={styles.scrollArrow}
-              animate={{ x: [0, 10, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            >
-              →
             </motion.div>
-          </motion.div>
+          ))}
         </div>
       </div>
 
@@ -312,18 +248,11 @@ const Projects = () => {
               </motion.button>
 
               <div className={styles.modalImage}>
-                {/* Updated modal image too */}
-                {selectedProject.image.startsWith("/api/placeholder") ? (
-                  <div className={styles.modalImagePlaceholder}>
-                    {selectedProject.title}
-                  </div>
-                ) : (
-                  <img
-                    src={selectedProject.image}
-                    alt={selectedProject.title}
-                    className={styles.modalImageActual}
-                  />
-                )}
+                <img
+                  src={selectedProject.image}
+                  alt={selectedProject.title}
+                  className={styles.modalImageActual}
+                />
               </div>
 
               <div className={styles.modalInfo}>

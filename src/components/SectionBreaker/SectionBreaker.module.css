@@ -1,6 +1,6 @@
 .sectionBreakerContainer {
   width: 100vw;
-  height: 50vh;
+  height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -45,7 +45,7 @@
   font-family: "KATSUMI";
   position: relative;
   padding: 0 2rem;
-   text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
 }
 
 .sectionBreakerInnerContainer span::before,
@@ -118,7 +118,7 @@
 }
 
 .sectionBreakerInnerContainer p {
-  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-size: clamp(0.8rem, 1.5vw, 1rem);
   color: #f0f0f0;
   font-family: "Inter", sans-serif;
   font-weight: 300;
@@ -128,17 +128,32 @@
 }
 
 .sectionBreakerInnerContainer button {
-  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-size: clamp(0.9rem, 1.3vw, 1.1rem);
   color: white;
   background: transparent;
   border: 2px solid white;
-  padding: 1rem 2rem;
+  padding: 0.8rem 1rem;
   cursor: pointer;
   text-transform: uppercase;
-  font-family: "KATSUMI";
+  font-family: "Inter", sans-serif;
+  font-weight: 300;
   letter-spacing: 1px;
   transition: all 0.3s ease;
   border-radius: 8px;
+}
+
+.sectionBreakerContainer button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.sectionBreakerInnerContainer button:disabled:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: none;
 }
 
 .sectionBreakerInnerContainer button:hover {

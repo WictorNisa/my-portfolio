@@ -3,13 +3,17 @@ import styles from "./About.module.css";
 
 const About = () => {
   const skills = [
+    "JavaScript",
     "TypeScript",
     "React",
     "Node.js",
     "Express.js",
+    "SQLite",
+    "PostgreSQL",
     "CSS",
     "Tailwind",
     "HTTP and REST API",
+    "GraphQl",
     "Git",
     "Java",
     "Spring Boot",

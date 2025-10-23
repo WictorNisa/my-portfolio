@@ -13,7 +13,7 @@ const Hero = () => {
         const heroHeight = heroSection.offsetHeight;
 
         // Hide scroll indicator when scrolled past hero section
-        setShowScrollIndicator(heroRect.bottom > heroHeight * 0.2);
+        setShowScrollIndicator(heroRect.bottom > heroHeight * 0.7);
       }
     };
 
@@ -45,7 +45,7 @@ const Hero = () => {
           target="_blank"
           rel="noopener noreferrer"
           className={styles.socialIcon}
-          whileHover={{ scale: 1.2, color: "#ff6b6b" }}
+          whileHover={{ scale: 1.2, color: "#ea4335" }}
           whileTap={{ scale: 0.9 }}
         >
           <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
@@ -58,7 +58,7 @@ const Hero = () => {
           target="_blank"
           rel="noopener noreferrer"
           className={styles.socialIcon}
-          whileHover={{ scale: 1.2, color: "#0077b5" }}
+          whileHover={{ scale: 1.2, color: "#ea4335" }}
           whileTap={{ scale: 0.9 }}
         >
           <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">

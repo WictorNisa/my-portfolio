@@ -30,7 +30,7 @@
   font-family: "KATSUMI";
   position: relative;
   padding: 0 2rem;
-   text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
 }
 
 .aboutTextContainer span::before,
@@ -171,7 +171,7 @@
   margin: 0 1rem;
   border-radius: 30px;
   color: var(--rose-red);
-  font-family: "KATSUMI";
+  font-family: "Inter", sans-serif;
   font-size: clamp(0.9rem, 1vw, 1rem);
   text-transform: uppercase;
   letter-spacing: 3px;

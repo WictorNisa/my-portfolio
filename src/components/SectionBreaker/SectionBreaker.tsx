@@ -26,10 +26,20 @@ const SectionBreaker = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
         >
-          Did you know I have a webpage where I explore my creative and visual
-          ideas?
+          Visual storytelling through web design is what drives me. I believe
+          great websites should be both beautiful and functional.
+        </motion.p>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          viewport={{ once: true }}
+        >
+          In the future I have a plan to create a website where I can showcase
+          more of my creative side.
         </motion.p>
         <motion.button
+          disabled
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.6 }}
@@ -40,7 +50,7 @@ const SectionBreaker = () => {
           }}
           whileTap={{ scale: 0.95 }}
         >
-          View page
+          Work in progress
         </motion.button>
       </motion.div>
     </div>
