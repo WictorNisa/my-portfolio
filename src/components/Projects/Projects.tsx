@@ -112,28 +112,6 @@ const Projects = () => {
                   index % 2 === 0 ? styles.contentLeft : styles.contentRight
                 }`}
               >
-                <motion.div
-                  className={styles.projectImageContainer}
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className={styles.projectImage}
-                  />
-                  <div className={styles.projectOverlay}>
-                    <motion.button
-                      className={styles.viewDetailsButton}
-                      onClick={() => setSelectedProject(project)}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      View Details
-                    </motion.button>
-                  </div>
-                </motion.div>
-
                 <div className={styles.projectInfo}>
                   <motion.span
                     className={styles.projectNumber}
@@ -186,26 +164,14 @@ const Projects = () => {
                     transition={{ duration: 0.6, delay: 0.6 }}
                     viewport={{ once: true }}
                   >
-                    <motion.a
-                      href={project.liveDemo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.projectButton}
+                    <motion.button
+                      className={styles.viewDetailsButton}
+                      onClick={() => setSelectedProject(project)}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >
-                      Live Demo
-                    </motion.a>
-                    <motion.a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.projectButtonSecondary}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      GitHub
-                    </motion.a>
+                      View Details
+                    </motion.button>
                   </motion.div>
                 </div>
               </div>
